@@ -99,7 +99,8 @@ body {
       font-weight: 500; }
     .datepicker_body table td div {
       color: #595959;
-      padding: 0.65rem 0px;
+      margin: 7px;
+      padding: 3px;
       font-weight: 400;
       border: 1px solid transparent;
       cursor: pointer; }
