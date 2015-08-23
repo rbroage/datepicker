@@ -1,0 +1,55 @@
+.datepicker_header {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2em;
+}
+.datepicker_daydisplay {
+    text-align: center;
+    background-color: #26a69a;
+    color: #fff;
+    font-weight: 300;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    .day {
+        background-color: #1f897f;
+        padding: 10px;
+        font-weight: 300;
+        font-size: 1em;
+        flex-shrink: 0;
+    }
+    .fullday {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        > div {
+            padding: 0;
+            margin: 0;
+        }
+        .month {
+            text-transform: uppercase;
+            font-size: 1.3em;
+        }
+        .date {
+            font-size: 3em;
+            font-weight: 400;
+        }
+        .year {
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.4);
+        }
+    }
+}
+@media (max-height: 580px) {
+    .datepicker_daydisplay .fullday {
+        flex-direction: row;
+    }
+}
+@media (max-height: 500px) {
+    .datepicker_daydisplay .fullday {
+        font-size: 0.8em;
+    }
+}

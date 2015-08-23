@@ -1,0 +1,34 @@
+
+.datepicker_footer {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+
+    > button {
+        border: none;
+        border-radius: 2px;
+        display: inline-block;
+        height: 36px;
+        line-height: 36px;
+        outline: 0;
+        text-transform: uppercase;
+        vertical-align: middle;
+        -webkit-tap-highlight-color: transparent;
+        box-shadow: none;
+        background-color: transparent;
+        color: #343434;
+        cursor: pointer;
+        font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+
+    .today {
+        color: #26a69a;
+    }
+
+    .close {
+        color: #26a69a;
+    }
+}

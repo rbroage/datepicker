@@ -1,0 +1,59 @@
+
+
+
+
+.datepicker_body {
+    flex-shrink: 0;
+    height: 300px;
+
+    table {
+        text-align: center;
+        border-collapse: collapse;
+        border-spacing: 0;
+        table-layout: fixed;
+        font-size: 1rem;
+        width: 100%;
+        margin-top: .75em;
+        margin-bottom: .5em;
+
+        td, th {
+            display: table-cell;
+            vertical-align: middle;
+            border-radius: 2px;
+            margin: 0px;
+            padding: 0px;
+            text-align: center;
+        }
+
+        th {
+            width: 14.2857%;
+            font-size: 0.75em;
+            padding-bottom: 0.25em;
+            color: #999;
+            font-weight: 500;
+        }
+
+        td div {
+            color: #595959;
+            padding: 0.65rem 0px;
+            font-weight: 400;
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+
+        .other-month {
+            background-color: #333;
+            color: #eee;
+        }
+
+        .today div {
+            color: #26A69A;
+        }
+
+        .selected div {
+            background-color: #26A69A;
+            color: #eee;
+            border-radius: 50%
+        }
+    }
+}
