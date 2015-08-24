@@ -65,7 +65,9 @@ Header.prototype.update = function ()
     	this.aLabels[ 2 ].innerHTML = this.oSelectedDate.getDate()
     		// oYear
     	this.aLabels[ 3 ].innerHTML = this.oSelectedDate.getFullYear()
-    }
+    } else {
+		this.aLabels[ 2 ].innerHTML = '...'
+	}
 }
 
 module.exports = Header

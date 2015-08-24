@@ -12,26 +12,26 @@ var DatePicker = function ( oInputTargetDom )
 
 	var oSelectedDate = new Date('3000-12-24')
 
-	this.oHeader = new Header( oSelectedDate )
-	this.oCalendar = new Calendar( oSelectedDate )
+	var oHeader = new Header( oSelectedDate )
+	var oCalendar = new Calendar( oSelectedDate )
+	var oFooter = new Footer( oSelectedDate )
 
-	this.oCalendar.on( 'select', function ()
+	oCalendar.on( 'select', function ()
 	{
 		oInputTargetDom.value = oSelectedDate.toInputString()
-		this.oHeader.update()
-	}.bind( this ) )
+		oHeader.update()
+	})
 
-	this.oFooter = new Footer( oSelectedDate )
-
-	this.oFooter.on( 'change', function ()
+	oFooter.on( 'change', function ()
 	{
 		oInputTargetDom.value = oSelectedDate.toInputString()
-		this.oHeader.update()
-	}.bind( this ) )
+		oHeader.update()
+		oCalendar.update()
+	})
 
-	this.oDomElement.appendChild( this.oHeader.getDom() )
-	this.oDomElement.appendChild( this.oCalendar.getDom() )
-	this.oDomElement.appendChild( this.oFooter.getDom() )
+	this.oDomElement.appendChild( oHeader.getDom() )
+	this.oDomElement.appendChild( oCalendar.getDom() )
+	this.oDomElement.appendChild( oFooter.getDom() )
 }
 
 DatePicker.prototype.getDom = function ()

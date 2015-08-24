@@ -1,4 +1,4 @@
-(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.Datepicker = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"D:\\Programs\\EasyPHP-DevServer-14.1VC11\\data\\localweb\\datepicker\\js\\calendar.js":[function(require,module,exports){
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.Datepicker = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"/home/reg/workspace/datepicker/js/calendar.js":[function(require,module,exports){
 var Date = require( './improvedDate' )
 var Events = require( './events' )
 
@@ -217,7 +217,7 @@ Calendar.prototype.update = function ()
 
 module.exports = Calendar
 
-},{"./events":"D:\\Programs\\EasyPHP-DevServer-14.1VC11\\data\\localweb\\datepicker\\js\\events\\index.js","./improvedDate":"D:\\Programs\\EasyPHP-DevServer-14.1VC11\\data\\localweb\\datepicker\\js\\improvedDate.js"}],"D:\\Programs\\EasyPHP-DevServer-14.1VC11\\data\\localweb\\datepicker\\js\\datepicker.js":[function(require,module,exports){
+},{"./events":"/home/reg/workspace/datepicker/js/events/index.js","./improvedDate":"/home/reg/workspace/datepicker/js/improvedDate.js"}],"/home/reg/workspace/datepicker/js/datepicker.js":[function(require,module,exports){
 var Header   = require( './header' )
 var Calendar = require( './calendar' )
 var Footer   = require( './footer' )
@@ -232,26 +232,26 @@ var DatePicker = function ( oInputTargetDom )
 
 	var oSelectedDate = new Date('3000-12-24')
 
-	this.oHeader = new Header( oSelectedDate )
-	this.oCalendar = new Calendar( oSelectedDate )
+	var oHeader = new Header( oSelectedDate )
+	var oCalendar = new Calendar( oSelectedDate )
+	var oFooter = new Footer( oSelectedDate )
 
-	this.oCalendar.on( 'select', function ()
+	oCalendar.on( 'select', function ()
 	{
 		oInputTargetDom.value = oSelectedDate.toInputString()
-		this.oHeader.update()
-	}.bind( this ) )
+		oHeader.update()
+	})
 
-	this.oFooter = new Footer( oSelectedDate )
-
-	this.oFooter.on( 'change', function ()
+	oFooter.on( 'change', function ()
 	{
 		oInputTargetDom.value = oSelectedDate.toInputString()
-		this.oHeader.update()
-	}.bind( this ) )
+		oHeader.update()
+		oCalendar.update()
+	})
 
-	this.oDomElement.appendChild( this.oHeader.getDom() )
-	this.oDomElement.appendChild( this.oCalendar.getDom() )
-	this.oDomElement.appendChild( this.oFooter.getDom() )
+	this.oDomElement.appendChild( oHeader.getDom() )
+	this.oDomElement.appendChild( oCalendar.getDom() )
+	this.oDomElement.appendChild( oFooter.getDom() )
 }
 
 DatePicker.prototype.getDom = function ()
@@ -261,7 +261,7 @@ DatePicker.prototype.getDom = function ()
 
 module.exports = DatePicker
 
-},{"./calendar":"D:\\Programs\\EasyPHP-DevServer-14.1VC11\\data\\localweb\\datepicker\\js\\calendar.js","./footer":"D:\\Programs\\EasyPHP-DevServer-14.1VC11\\data\\localweb\\datepicker\\js\\footer.js","./header":"D:\\Programs\\EasyPHP-DevServer-14.1VC11\\data\\localweb\\datepicker\\js\\header.js","./improvedDate":"D:\\Programs\\EasyPHP-DevServer-14.1VC11\\data\\localweb\\datepicker\\js\\improvedDate.js"}],"D:\\Programs\\EasyPHP-DevServer-14.1VC11\\data\\localweb\\datepicker\\js\\events\\event.js":[function(require,module,exports){
+},{"./calendar":"/home/reg/workspace/datepicker/js/calendar.js","./footer":"/home/reg/workspace/datepicker/js/footer.js","./header":"/home/reg/workspace/datepicker/js/header.js","./improvedDate":"/home/reg/workspace/datepicker/js/improvedDate.js"}],"/home/reg/workspace/datepicker/js/events/event.js":[function(require,module,exports){
 var Event = function ( sName )
 {
 	this.name = sName
@@ -275,7 +275,7 @@ Event.prototype.registerCallback = function ( callback )
 
 module.exports = Event
 
-},{}],"D:\\Programs\\EasyPHP-DevServer-14.1VC11\\data\\localweb\\datepicker\\js\\events\\index.js":[function(require,module,exports){
+},{}],"/home/reg/workspace/datepicker/js/events/index.js":[function(require,module,exports){
 var Event = require( './event' )
 
 var Events = function ()
@@ -349,7 +349,7 @@ Events.prototype.addEventListener = function ( sEventName, callback )
 
 module.exports = Events
 
-},{"./event":"D:\\Programs\\EasyPHP-DevServer-14.1VC11\\data\\localweb\\datepicker\\js\\events\\event.js"}],"D:\\Programs\\EasyPHP-DevServer-14.1VC11\\data\\localweb\\datepicker\\js\\footer.js":[function(require,module,exports){
+},{"./event":"/home/reg/workspace/datepicker/js/events/event.js"}],"/home/reg/workspace/datepicker/js/footer.js":[function(require,module,exports){
 var Events = require( './events' )
 
 var Footer = function ( oSelectedDate )
@@ -392,7 +392,7 @@ Footer.prototype.createButton = function ( sLabel, fCallback )
 
 module.exports = Footer
 
-},{"./events":"D:\\Programs\\EasyPHP-DevServer-14.1VC11\\data\\localweb\\datepicker\\js\\events\\index.js"}],"D:\\Programs\\EasyPHP-DevServer-14.1VC11\\data\\localweb\\datepicker\\js\\header.js":[function(require,module,exports){
+},{"./events":"/home/reg/workspace/datepicker/js/events/index.js"}],"/home/reg/workspace/datepicker/js/header.js":[function(require,module,exports){
 var Events = require( './events' )
 
 var Header = function ( oSelectedDate )
@@ -460,12 +460,14 @@ Header.prototype.update = function ()
     	this.aLabels[ 2 ].innerHTML = this.oSelectedDate.getDate()
     		// oYear
     	this.aLabels[ 3 ].innerHTML = this.oSelectedDate.getFullYear()
-    }
+    } else {
+		this.aLabels[ 2 ].innerHTML = '...'
+	}
 }
 
 module.exports = Header
 
-},{"./events":"D:\\Programs\\EasyPHP-DevServer-14.1VC11\\data\\localweb\\datepicker\\js\\events\\index.js"}],"D:\\Programs\\EasyPHP-DevServer-14.1VC11\\data\\localweb\\datepicker\\js\\improvedDate.js":[function(require,module,exports){
+},{"./events":"/home/reg/workspace/datepicker/js/events/index.js"}],"/home/reg/workspace/datepicker/js/improvedDate.js":[function(require,module,exports){
 var aMonths = [ 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ]
 var aDays = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday' ]
 
@@ -511,7 +513,7 @@ Date.prototype.isEquals = function ( iDate, iMonth, iYear )
 
 module.exports = Date
 
-},{}],"D:\\Programs\\EasyPHP-DevServer-14.1VC11\\data\\localweb\\datepicker\\js\\main.js":[function(require,module,exports){
+},{}],"/home/reg/workspace/datepicker/js/main.js":[function(require,module,exports){
 var DatePicker = require( './datepicker' )
 
 var getInput = function ( sIdInputTarget )
@@ -571,5 +573,5 @@ module.exports = {
 	},
 }
 
-},{"./datepicker":"D:\\Programs\\EasyPHP-DevServer-14.1VC11\\data\\localweb\\datepicker\\js\\datepicker.js"}]},{},["D:\\Programs\\EasyPHP-DevServer-14.1VC11\\data\\localweb\\datepicker\\js\\main.js"])("D:\\Programs\\EasyPHP-DevServer-14.1VC11\\data\\localweb\\datepicker\\js\\main.js")
+},{"./datepicker":"/home/reg/workspace/datepicker/js/datepicker.js"}]},{},["/home/reg/workspace/datepicker/js/main.js"])("/home/reg/workspace/datepicker/js/main.js")
 });
