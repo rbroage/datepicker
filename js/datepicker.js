@@ -18,20 +18,34 @@ var DatePicker = function ( oInputTargetDom )
 
 	oCalendar.on( 'select', function ()
 	{
-		oInputTargetDom.value = oSelectedDate.toInputString()
+		this.changeValue( oInputTargetDom, oSelectedDate.toInputString() )
 		oHeader.update()
-	})
+	}.bind(this))
 
 	oFooter.on( 'change', function ()
 	{
-		oInputTargetDom.value = oSelectedDate.toInputString()
+		this.changeValue( oInputTargetDom, oSelectedDate.toInputString() )
 		oHeader.update()
 		oCalendar.update()
-	})
+	}.bind(this))
 
 	this.oDomElement.appendChild( oHeader.getDom() )
 	this.oDomElement.appendChild( oCalendar.getDom() )
 	this.oDomElement.appendChild( oFooter.getDom() )
+}
+
+DatePicker.prototype.changeValue = function( oInputTargetDom, oValue )
+{
+	oInputTargetDom.value = oValue
+
+	if ( "createEvent" in document ) {
+	    var oEvent = document.createEvent( "HTMLEvents" )
+	    oEvent.initEvent( "change", false, true )
+	    oInputTargetDom.dispatchEvent( oEvent )
+	} else {
+		 var evt = document.createEventObject()
+		oInputTargetDom.fireEvent( "onchange", evt )
+	}
 }
 
 DatePicker.prototype.getDom = function ()

@@ -48,7 +48,9 @@ module.exports = {
 			}
 		}
 		oContainer.appendChild( oDatePicker.getDom() )
-		document.body.appendChild( oContainer )
+
+		oInputTargetDom.parentNode.insertBefore( oContainer, oInputTargetDom )
+		//document.body.appendChild( oContainer )
 
 		oInputTargetDom.onclick = function ()
 		{
